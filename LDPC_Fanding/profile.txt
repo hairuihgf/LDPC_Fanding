@@ -1,0 +1,20 @@
+PC MATRIX:			2048_384_mackay.code
+SNR NUMBER:			1
+START SNR:			0.5											//Remember *2 for curves				
+SNR INCR:			0.2
+RANDOM SEEDS:		30323  173 13								//RANDOM SEEDS	37511  797 17
+MIN FRM:			20
+MIN ERROR:			10
+ENCODING MTD:		1											//ENCODING MTD 0-ZERO CODE (fast mode) 
+MAX ITR:			100
+ERR ERA:			0											//Generate Errors '0' or Erasures '1'
+BRST LEN:			0	
+BRST NUM:			0	
+ALGORITHM:			0											//
+DELTA:				0.625   									//d of DD BMP; scale for min_sum
+SCALE:				0.625										//scale
+DECODE ALGORITHM:	0											// 0 min-sum  1 quantized min-sum 2 rbimlgd 3 quantized rbimlgd 4 isrb 5 mrbmlgd 6 iisrb 7 iosrb 8 osrb 9 bf 10 ddbmp 11 min-sum 12 wbf 13 spa 14 quasi_ms 15 hard-decision min-sum 16 downsampling min-sum
+QN_BITS:			8											//Quantizing bits, FIX POINT for Decoder  q_bits
+ALPHA:				1.69										//ALPHA FACTOR FOR M/IMWBF		
+QUANTIZES:			0.125  1.3  4								//q_step
+dsum:				100
