@@ -17,7 +17,7 @@ void init_sparse(struct matrix *sparse, char* filename)
 	sparse->message_num = sparse->col_num - sparse->row_num;
 
 	printf("\r%s: %d \n", "row_num",sparse->row_num);
-
+	printf("\r%s: %d \n", "col_num", sparse->col_num);
 
 	fscanf_s(fp, "%d", &sparse->max_colweigh);
 	fscanf_s(fp, "%d", &sparse->max_rowweigh);
@@ -91,4 +91,48 @@ void init_gauss(struct matrix *sparse, char **gauss, int *exchange)
 			gauss[i][sparse->row[i - 1][j]] = 1;
 	}
 
+}
+
+void init_decode(struct matrix *sparse, struct v_node *v_line, struct c_node *c_line)
+{
+	int i, j;
+
+	//Construct Graph
+	for (i = 1; i <= sparse->col_num; i++)
+	{
+		//	v_line[i].m_value=new int [sparse->col_weigh[i-1]+1];
+		v_line[i].m_value = (int *)malloc(sizeof(int)*(sparse->col_weigh[i - 1] + 1));
+
+		//	v_line[i].r_value=new double [sparse->col_weigh[i-1]+1];
+		v_line[i].r_value = (double *)malloc(sizeof(double)*(sparse->col_weigh[i - 1] + 1));
+
+		//	v_line[i].link=new c_node*[sparse->col_weigh[i-1]+1];
+		v_line[i].link = (c_node **)malloc(sizeof(c_node *)*(sparse->col_weigh[i - 1] + 1));
+
+		v_line[i].sybol = i;
+		v_line[i].step = 1;
+	}
+
+	for (i = 1; i <= sparse->row_num; i++)
+	{
+		//	c_line[i].m_value=new int [sparse->row_weigh[i-1]+1];
+		c_line[i].m_value = (int *)malloc(sizeof(int)*(sparse->row_weigh[i - 1] + 1));
+
+		//	c_line[i].q_value=new double [sparse->row_weigh[i-1]+1];
+		c_line[i].q_value = (double *)malloc(sizeof(double)*(sparse->row_weigh[i - 1] + 1));
+
+		//	c_line[i].link=new v_node*[sparse->row_weigh[i-1]+1];
+		c_line[i].link = (v_node **)malloc(sizeof(v_node *)*(sparse->row_weigh[i - 1] + 1));
+
+		c_line[i].sybol = i;
+		c_line[i].step = 1;
+	}
+
+	for (i = 1; i <= sparse->col_num; i++)
+		for (j = 1; j <= sparse->col_weigh[i - 1]; j++)
+			v_line[i].link[j] = &c_line[sparse->col[i - 1][j - 1]];
+
+	for (i = 1; i <= sparse->row_num; i++)
+		for (j = 1; j <= sparse->row_weigh[i - 1]; j++)
+			c_line[i].link[j] = &v_line[sparse->row[i - 1][j - 1]];
 }

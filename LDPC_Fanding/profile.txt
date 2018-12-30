@@ -1,20 +1,25 @@
-PC MATRIX:			2048_384_mackay.code
-SNR NUMBER:			1
-START SNR:			0.5											//Remember *2 for curves				
-SNR INCR:			0.2
+PC MATRIX:			2304_1728_64_0.250PCM
+SNR NUMBER:			20
+START SNR:			-0.5											//Remember *2 for curves				
+SNR INCR:			0.1
 RANDOM SEEDS:		30323  173 13								//RANDOM SEEDS	37511  797 17
-MIN FRM:			20
-MIN ERROR:			10
+MIN FRM:			50
+MIN ERROR:			50
 ENCODING MTD:		1											//ENCODING MTD 0-ZERO CODE (fast mode) 
-MAX ITR:			100
+MAX ITR:			50
 ERR ERA:			0											//Generate Errors '0' or Erasures '1'
 BRST LEN:			0	
 BRST NUM:			0	
 ALGORITHM:			0											//
 DELTA:				0.625   									//d of DD BMP; scale for min_sum
 SCALE:				0.625										//scale
-DECODE ALGORITHM:	0											// 0 min-sum  1 quantized min-sum 2 rbimlgd 3 quantized rbimlgd 4 isrb 5 mrbmlgd 6 iisrb 7 iosrb 8 osrb 9 bf 10 ddbmp 11 min-sum 12 wbf 13 spa 14 quasi_ms 15 hard-decision min-sum 16 downsampling min-sum
+DECODE ALGORITHM:	13											// 0 min-sum  1 quantized min-sum 2 rbimlgd 3 quantized rbimlgd 4 isrb 5 mrbmlgd 6 iisrb 7 iosrb 8 osrb 9 bf 10 ddbmp 11 min-sum 12 wbf 13 spa 14 quasi_ms 15 hard-decision min-sum 16 downsampling min-sum
 QN_BITS:			8											//Quantizing bits, FIX POINT for Decoder  q_bits
 ALPHA:				1.69										//ALPHA FACTOR FOR M/IMWBF		
 QUANTIZES:			0.125  1.3  4								//q_step
 dsum:				100
+modulate_mode:		1											//
+DOPPLER:			50
+T_SAMPLE:			0.001
+RAYLEIGH_M:			16
+channel_style:		1											//0 fading channel;1 awgn channel;

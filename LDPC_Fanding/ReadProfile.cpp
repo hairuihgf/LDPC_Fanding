@@ -1,116 +1,110 @@
+#define _CRT_SECURE_NO_DEPRECATE
 #include <string.h>
 #include <stdlib.h>
 #include "function.h"
 
-void ReadProfile(
-	AWGN    p, 
-	AWGN    *pi,
-	char	matrixfile[200], 
-	int		test_num,
-	int		leastframe,
-	int		leasterror,
-	int		codemethod,
-	int		codeword,
-	int		max_iter,
-	int		err_era,                  // Generate Errors '0' or Erasures '1'
-	int		burstlen, 
-	int		burstnum,
-	int		de_alg,					  // Algorithm Type: '0' BP; '1' DD-BMP
-	float	delta,					  // d of DD-BMP
-	float	scale,
-	int		q_bits,					  // Quantizing Bits
-	double	alpha,					  // Alpha Factor
-	double	d_quasi,                  //parameter of (q+1)-bit quasi-uniform quantizer
-	int		dsum,
-	int		max_q_level,				  //maximum value of quantization level
-	double	q_step,					//quantized step
-	double  snr_step
-	)
+void ReadProfile(struct profile *profiles)
 {
 	FILE	*fin;
 	char	ch;
 	float	readtemp;
 
-	fopen_s(&fin, "profile.txt", "r");
+	fopen_s(& fin, "profile.txt", "r");
 
 	/*Read Profile*/
 	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%s", matrixfile);
+	fscanf(fin, "%s", profiles->matrixfile);
 
 
 	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d", &test_num);
-
-	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%f", &readtemp);
-	p.snr = (double)readtemp;
+	fscanf(fin, "%d", &profiles->test_num);
 
 	while ((ch = getc(fin)) != ':') {}
 	fscanf(fin, "%f", &readtemp);
-	snr_step = (double)readtemp;
-
-	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d ", &p.ix);
-	//seed1 = p.ix;
-	fscanf(fin, "%d ", &p.iy);
-	//seed2 = p.iy;
-	fscanf(fin, "%d ", &p.iz);
-	//seed3 = p.iz;
-
-
-	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d", &leastframe);
-
-	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d", &leasterror);
-
-	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d", &codemethod);
-
-	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d", &max_iter);
-
-	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d", &err_era);
-
-	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d", &burstlen);
-
-	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d", &burstnum);
-
-	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d", &de_alg);
+	profiles->snr = (double)readtemp;
 
 	while ((ch = getc(fin)) != ':') {}
 	fscanf(fin, "%f", &readtemp);
-	delta = readtemp;
+	profiles->snr_step = (double)readtemp;
 
 	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%f", &scale);
+	fscanf(fin, "%d ", &profiles->seed1);
+	fscanf(fin, "%d ", &profiles->seed2);
+	fscanf(fin, "%d ", &profiles->seed3);
+	
+
 
 	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d", &codeword);
+	fscanf(fin, "%d", &profiles->leastframe);
 
 	while ((ch = getc(fin)) != ':') {}
-	fscanf(fin, "%d", &q_bits);
+	fscanf(fin, "%d", &profiles->leasterror);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->codemethod);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->max_iter);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->err_era);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->burstlen);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->burstnum);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->de_alg);
 
 	while ((ch = getc(fin)) != ':') {}
 	fscanf(fin, "%f", &readtemp);
-	alpha = readtemp;
+	profiles->delta = readtemp;
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%f", &profiles->scale);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->codeword);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->q_bits);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%f", &readtemp);
+	profiles->alpha = readtemp;
 
 
 	while ((ch = getc(fin)) != ':') {}
 	fscanf(fin, "%f", &readtemp);
-	q_step = readtemp;
-
+	profiles->q_step = readtemp;
 	fscanf(fin, "%f", &readtemp);
-	d_quasi = readtemp;
+	profiles->d_quasi = readtemp;
+	fscanf(fin, "%d", &profiles->max_q_level);
 
-	fscanf(fin, "%d", &max_q_level);
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->dsum);
 
-	fscanf(fin, "%d", &dsum);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->modulate_mode);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%f", &readtemp);
+	profiles->DOPPLER = readtemp;
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%f", &readtemp);
+	profiles->T_SAMPLE = readtemp;
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->RAYLEIGH_M);
+
+	while ((ch = getc(fin)) != ':') {}
+	fscanf(fin, "%d", &profiles->channel_style);
 
 	fclose(fin);
+
 	fin = NULL;
 }

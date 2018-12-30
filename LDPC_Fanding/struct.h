@@ -30,7 +30,38 @@ struct   AWGN
 	double     rate;
 };
 
-
+struct profile
+{
+	char	matrixfile[200];
+	int		test_num;
+	double  snr;
+	double  snr_step;
+	int		seed1;
+	int		seed2;
+	int		seed3;
+	int		leastframe;
+	int		leasterror;
+	int		codemethod;
+	int		max_iter;
+	int		err_era;                 // Generate Errors '0' or Erasures '1'
+	int		burstlen;
+	int		burstnum;
+	int		de_alg;					  // Algorithm Type: '0' BP; '1' DD-BMP
+	float	delta;					  // d of DD-BMP
+	float	scale;
+	int		codeword;
+	int		q_bits;					  // Quantizing Bits
+	double	alpha;					  // Alpha Factor
+	double	q_step;					//quantized step
+	double	d_quasi;                  //parameter of (q+1)-bit quasi-uniform quantizer
+	int		max_q_level;				  //maximum value of quantization level
+	int		dsum;
+	int		modulate_mode;
+	double	DOPPLER;
+	double	T_SAMPLE;
+	int		RAYLEIGH_M;
+	int		channel_style;
+};
 struct v_node  //Variable Node
 {
 	struct c_node **link; //Connected Check Node

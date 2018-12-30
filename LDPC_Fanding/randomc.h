@@ -179,7 +179,7 @@ private:
 	TArch Architecture;                 // Conversion to float depends on architecture
 };
 
-
+/*
 class CRandomMother {             // Encapsulate random number generator
 public:
 	void RandomInit(uint32 seed);       // Initialization
@@ -192,6 +192,7 @@ public:
 protected:
 	uint32 x[5];                        // History buffer
 };
+*/
 
 #endif
 

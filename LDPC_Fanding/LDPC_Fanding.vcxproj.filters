@@ -27,6 +27,33 @@
     <ClCompile Include="ReadProfile.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="encode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Complex.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="modulation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="demodulation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="fading_channel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="fading_channel_demodulate.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="decode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mersenne.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="struct.h">
@@ -36,6 +63,30 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="function.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pn_seq.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Complex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="modulation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="demodulation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="fading_channel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="fading_channel_demodulate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="awgn_channel.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

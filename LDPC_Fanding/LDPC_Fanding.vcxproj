@@ -110,13 +110,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Complex.cpp" />
+    <ClCompile Include="decode.cpp" />
+    <ClCompile Include="demodulation.cpp" />
+    <ClCompile Include="encode.cpp" />
+    <ClCompile Include="fading_channel.cpp" />
+    <ClCompile Include="fading_channel_demodulate.cpp" />
     <ClCompile Include="gauss.cpp" />
     <ClCompile Include="initial.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mersenne.cpp" />
+    <ClCompile Include="modulation.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="ReadProfile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="awgn_channel.h" />
+    <ClInclude Include="Complex.h" />
+    <ClInclude Include="demodulation.h" />
+    <ClInclude Include="fading_channel.h" />
+    <ClInclude Include="fading_channel_demodulate.h" />
     <ClInclude Include="function.h" />
+    <ClInclude Include="modulation.h" />
+    <ClInclude Include="pn_seq.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="randomc.h" />
     <ClInclude Include="struct.h" />
   </ItemGroup>

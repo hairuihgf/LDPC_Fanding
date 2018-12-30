@@ -1,0 +1,5 @@
+4160_3120_104_0.250PCM ;R: 0.250000; EM: 1; MIN ERR: 50; MAX ITR: 50; ER_EA: 0; Br_LEN: 0 q_step:0.125000
+
+Q_bits: 8; Q_step: 0.125000;Algorithm: 13;Channel: 1
+
+SNR	    iBER			 BER		   FER			ITR#
